@@ -1,0 +1,54 @@
+class Users {
+    field String name; // Поле экземпляра: имя пользователя (тип String)
+    field int score; // Поле экземпляра: счет пользователя (тип int)
+    field boolean myTurn; // Поле экземпляра: флаг, указывающий, чей сейчас ход (тип boolean)
+
+    constructor Users new() {
+        let score = 0; // Инициализируем счет пользователя значением 0
+        let myTurn = false;
+        return this; // Возвращаем ссылку на созданный объект Users
+    }
+
+    method int GetScore(){
+        return score;
+    }
+
+    method boolean GetMyTurn(){
+        return myTurn;
+    }
+
+    method void SetMyTurn() {
+        let myTurn = true;
+        return;
+    }
+
+    method void SetNotMyTurn(Users nextUser) {
+        let myTurn = false;
+        do nextUser.SetMyTurn();
+        return;
+    }
+
+    method void UpdateScore(Card card1, Card card2, Users nextUser) {
+        if (card1.GetName() = card2.GetName()) { // Если имена карт совпадают
+            let score = score + 1;
+        }
+        else{
+            do SetNotMyTurn(nextUser);
+        }
+        return; // Завершаем метод (void, ничего не возвращает)
+    }
+    
+    function int GetPlayerInput() {
+        var int cardIndex; // Локальная переменная: номер карты, введенный игроком
+
+        let cardIndex = Keyboard.readChar() - 48; // Считываем символ с клавиатуры и преобразуем его в число (вычитаем 48)
+
+        if ((cardIndex < 0) | (cardIndex > (9))) { // Проверяем, находится ли номер карты в допустимом диапазоне
+            return Users.GetPlayerInput(); // Рекурсивно вызываем этот же метод для повторного запроса ввода
+        }
+        return cardIndex; // Возвращаем номер карты, введенный игроком
+    }
+}
+
+
+

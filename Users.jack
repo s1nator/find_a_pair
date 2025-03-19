@@ -1,0 +1,54 @@
+class Users {
+    field String name; // Поле экземпляра: имя пользователя (тип String)
+    field int score; // Поле экземпляра: счет пользователя (тип int)
+    field boolean myTurn; // Поле экземпляра: флаг, указывающий, чей сейчас ход (тип boolean)
+
+    constructor Users new() {
+        let score = 0; // Инициализируем счет пользователя значением 0
+        let myTurn = false; // Изначально ход пользователя не установлен
+        return this; // Возвращаем ссылку на созданный объект Users
+    }
+
+    method int GetScore(){
+        return score;
+    }
+
+    method void UpdateScore(Card card1, Card card2) {
+        if (card1.GetName() = card2.GetName()) { // Если имена карт совпадают
+            let score = score + 1; // Увеличиваем счет пользователя на 1
+        }
+        return; // Завершаем метод (void, ничего не возвращает)
+    }
+
+    method void UetMyTurn() {
+        let myTurn = true; // Устанавливаем флаг myTurn в true
+        return; // Завершаем метод
+    }
+
+    method void SetNotMyTurn() {
+        let myTurn = false; // Устанавливаем флаг myTurn в false
+        return; // Завершаем метод
+    }
+
+    method void SwitchUser(Card card1, Card card2) {
+        if (~(card1.GetName() = card2.GetName())) { // Если имена карт НЕ совпадают
+            do setNotMyTurn(); // Устанавливаем флаг myTurn в false (передаем ход другому)
+            return; // Завершаем метод (после передачи хода)
+        }
+        return; // Завершаем метод (если имена карт совпали, ничего не делаем)
+
+    }
+
+    method int GetPlayerInput() {
+        var int cardIndex; // Локальная переменная: номер карты, введенный игроком
+
+        let cardIndex = Keyboard.readChar() - 48; // Считываем символ с клавиатуры и преобразуем его в число (вычитаем 48)
+
+        if ((cardIndex < 0) | (cardIndex > (Deck.CountOfCards() - 1))) { // Проверяем, находится ли номер карты в допустимом диапазоне
+            return getPlayerInput(); // Рекурсивно вызываем этот же метод для повторного запроса ввода
+        }
+        return cardIndex; // Возвращаем номер карты, введенный игроком
+    }
+}
+
+

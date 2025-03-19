@@ -1,0 +1,71 @@
+class Main{
+
+    // field Users user1;
+    // field Users user2; 
+
+    function void main() {
+        do Screen.clearScreen();
+        
+        do Screen.setColor(true);
+
+        // let user1 = Users.new();
+        // let user2 = Users.new();
+        
+        do Drawer.drawSquare0();
+        do Drawer.drawSquare1();
+        do Drawer.drawSquare2();
+        do Drawer.drawSquare3();
+        do Drawer.drawSquare4(); 
+        do Drawer.drawSquare5();
+        do Drawer.drawSquare6();
+        do Drawer.drawSquare7();
+        do Drawer.drawSquare8();
+        do Drawer.drawSquare9();
+
+        // while (user1.GetScore() + user2.GetScore() != 5){
+            
+        //     if (user1.GetPlayerInput() == 0){
+        //         do Screen.clearScreen();
+        //         do Drawer.drawSquareAUp();
+        //         do Drawer.drawSquare1();
+        //         do Drawer.drawSquare2();
+        //         do Drawer.drawSquare3();
+        //         do Drawer.drawSquare4(); 
+        //         do Drawer.drawSquare5();
+        //         do Drawer.drawSquare6();
+        //         do Drawer.drawSquare7();
+        //         do Drawer.drawSquare8();
+        //         do Drawer.drawSquare9();
+        //     }
+        // }
+        
+        // do Drawer.drawSquareAUp();
+        // do Drawer.drawSquareBUp();
+        // do Drawer.drawSquareCUp();
+        // do Drawer.drawSquareDUp();
+        // do Drawer.drawSquareEUp(); 
+        // do Drawer.drawSquareADown();
+        // do Drawer.drawSquareBDown();
+        // do Drawer.drawSquareCDown();
+        // do Drawer.drawSquareDDown();
+        // do Drawer.drawSquareEDown();
+
+        // do Output.printString("Player 1:  ");
+        // do Output.printInt(2);
+        // do Output.println();  таблица игроков
+        // do Output.printString("Player 2:  ");
+        // do Output.printInt(2);
+        // do Output.println();
+        // do Screen.drawText("Player1", 50, 100);
+        // do Screen.drawText("Player2", 300, 100);
+        // do Screen.drawText(100, 50, "Привет, мир!");
+
+
+
+
+        return;
+    }
+
+    
+
+}

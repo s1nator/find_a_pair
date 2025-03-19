@@ -1,0 +1,155 @@
+class Main{
+    function void main() {
+        var Users user1;
+        var Users user2;
+        var Deck deck;
+        var int userInput;
+        var int numberOfFlip;
+        var Array cards;
+        var Card firstCard;
+        var Card secondCard;
+        var Card card0;
+        var Card card1;
+        var Card card2;
+        var Card card3;
+        var Card card4;
+        var Card card5;
+        var Card card6;
+        var Card card7;
+        var Card card8;
+        var Card card9;
+
+        let user1 = Users.new();
+        let user2 = Users.new();
+        let deck = Deck.new();
+        let numberOfFlip = 0;
+
+        do user1.SetMyTurn();
+
+        do Screen.clearScreen();
+        do Screen.setColor(true);
+        do Drawer.drawSquare0();
+        do Drawer.drawSquare1();
+        do Drawer.drawSquare2();
+        do Drawer.drawSquare3();
+        do Drawer.drawSquare4(); 
+        do Drawer.drawSquare5();
+        do Drawer.drawSquare6();
+        do Drawer.drawSquare7();
+        do Drawer.drawSquare8();
+        do Drawer.drawSquare9();
+
+        while (~(user1.GetScore() + user2.GetScore() = 5)){
+            let cards = deck.GetCards();
+            let card0 = cards[0];
+            let card1 = cards[1];
+            let card2 = cards[2];
+            let card3 = cards[3];
+            let card4 = cards[4];
+            let card5 = cards[5];
+            let card6 = cards[6];
+            let card7 = cards[7];
+            let card8 = cards[8];
+            let card9 = cards[9];
+            let numberOfFlip = numberOfFlip + 1;
+
+            do Screen.clearScreen();
+            do Screen.setColor(true);
+
+            let userInput = Users.GetPlayerInput();
+
+            if (Main.mod2(numberOfFlip) = 0){
+                let secondCard = cards[userInput];
+                if (user1.GetMyTurn()){
+                    do user1.UpdateScore(firstCard, secondCard, user2);
+                }
+                else{
+                    do user2.UpdateScore(firstCard, secondCard, user1);
+                }
+            }
+
+            let firstCard = cards[userInput];
+            do firstCard.Flip();
+
+            if (card0.IsFlipped()){
+                do Drawer.drawSquareAUp();
+            }
+            else{
+                do Drawer.drawSquare0();
+            }
+            if (card1.IsFlipped()){
+                do Drawer.drawSquareBUp();
+            }
+            else{
+                do Drawer.drawSquare1();
+            }
+            if (card2.IsFlipped()){
+                do Drawer.drawSquareCUp();
+            }
+            else{
+                do Drawer.drawSquare2();
+            }
+            if (card3.IsFlipped()){
+                do Drawer.drawSquareDUp();
+            }
+            else{
+                do Drawer.drawSquare3();
+            }
+            if (card4.IsFlipped()){
+                do Drawer.drawSquareEUp();
+            }
+            else{
+                do Drawer.drawSquare4();
+            }
+            if (card5.IsFlipped()){
+                do Drawer.drawSquareEDown();
+            }
+            else{
+                do Drawer.drawSquare5();
+            }
+            if (card6.IsFlipped()){
+                do Drawer.drawSquareDDown();
+            }
+            else{
+                do Drawer.drawSquare6();
+            }
+            if (card7.IsFlipped()){
+                do Drawer.drawSquareCDown();
+            }
+            else{
+                do Drawer.drawSquare7();
+            }
+            if (card8.IsFlipped()){
+                do Drawer.drawSquareBDown();
+            }
+            else{
+                do Drawer.drawSquare8();
+            }
+            if (card9.IsFlipped()){
+                do Drawer.drawSquareADown();
+            }
+            else{
+                do Drawer.drawSquare9();
+            }
+        }
+
+        do Output.printString("Player 1:  ");
+        do Output.printInt(user1.GetScore());
+        do Output.println();
+        do Output.printString("Player 2:  ");
+        do Output.printInt(user2.GetScore());
+        do Output.println();
+        return;
+    }
+
+    function int mod2(int number) {
+        var int result;
+        let result = number;
+
+        while (result > 1) {
+            let result = result - 2;
+        }
+        return result;
+    }
+
+}

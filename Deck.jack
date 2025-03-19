@@ -1,0 +1,99 @@
+class Deck {
+    field Array cards; // Массив карточек в колоде
+    field int size; // Количество карточек в колоде
+    static Array alphabet; // Массив строк алфавита
+
+    constructor Deck new(int deckSize) {
+        var int i;
+        let cards = Array.new(deckSize); // Создаем массив для карточек
+        let size = deckSize; // Запоминаем размер колоды
+
+        if (alphabet = null) { // Инициализируем алфавит только один раз
+            let alphabet = Deck.CreateAlphabetArray();
+        }
+
+        let i = 0;
+        while (i < size) {
+            let cards[i] = Card.new(alphabet[i / 2]); // Создаем пары карточек напрямую из массива строк
+            let i = i + 1;
+        }
+
+        do Deck.DeterministicShuffleCards(cards, size); // Перемешиваем карты в колоде
+        return this;
+    }
+
+    function Array CreateAlphabetArray() {
+        var Array a;
+        let a = Array.new(26);
+        let a[0] = "A";
+        let a[1] = "B";
+        let a[2] = "C";
+        let a[3] = "D";
+        let a[4] = "E";
+        let a[5] = "F";
+        let a[6] = "G";
+        let a[7] = "H";
+        let a[8] = "I";
+        let a[9] = "J";
+        let a[10] = "K";
+        let a[11] = "L";
+        let a[12] = "M";
+        let a[13] = "N";
+        let a[14] = "O";
+        let a[15] = "P";
+        let a[16] = "Q";
+        let a[17] = "R";
+        let a[18] = "S";
+        let a[19] = "T";
+        let a[20] = "U";
+        let a[21] = "V";
+        let a[22] = "W";
+        let a[23] = "X";
+        let a[24] = "Y";
+        let a[25] = "Z";
+        return a;
+    }
+
+    method Array GetCards() {
+        return cards; // Возвращает массив карточек (колоду)
+    }
+
+    method int GetSize() {
+        return size; // Возвращает размер колоды
+    }
+
+    function int CountOfCards() {
+        return size; // Возвращает размер колоды
+    }
+
+    function void DeterministicShuffleCards(Array arr, int arrSize) {
+        var int i, tempIndex;
+        var Card temp;
+
+        let i = 0;
+        while (i < arrSize / 2) {
+            let tempIndex = i + 1;
+            if (tempIndex > arrSize - 1) {
+                let tempIndex = 0;
+            }
+            let temp = arr[i];
+            let arr[i] = arr[tempIndex];
+            let arr[tempIndex] = temp;
+            let i = i + 2;
+        }
+        return;
+    }
+
+    method void Dispose() {
+        var int i;
+        var Card currentCard;
+        let i = 0;
+        while (i < size) {
+            let currentCard = cards[i];
+            do currentCard.Dispose();
+            let i = i + 1;
+        }
+        do cards.dispose();
+        return;
+    }
+}

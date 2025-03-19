@@ -1,0 +1,35 @@
+class Deck {
+    field Array cards; // Массив карточек в колоде
+
+    constructor Deck new() {
+        let cards = Array.new(10);
+        let cards[0] = Card.new("A");
+        let cards[1] = Card.new("B");
+        let cards[2] = Card.new("C");
+        let cards[3] = Card.new("D");
+        let cards[4] = Card.new("E");
+        let cards[0] = Card.new("E");
+        let cards[1] = Card.new("D");
+        let cards[2] = Card.new("C");
+        let cards[3] = Card.new("B");
+        let cards[4] = Card.new("A");
+        return this;
+    }
+
+    method Array GetCards() {
+        return cards; // Возвращает массив карточек (колоду)
+    }
+
+    method void Dispose() {
+        var int i;
+        var Card currentCard;
+        let i = 0;
+        while (i < 10) {
+            let currentCard = cards[i];
+            do currentCard.Dispose();
+            let i = i + 1;
+        }
+        do cards.dispose();
+        return;
+    }
+}

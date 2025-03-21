@@ -1,0 +1,44 @@
+class Card {
+    field int code;
+    field boolean isFlipped; // true, если открыта, false, если закрыта
+    field boolean havePair; // true, если у карточки есть пара
+
+    constructor Card new(int cardCode) {
+        let code = cardCode;
+        let isFlipped = false;
+        let havePair = false;
+        return this;
+    }
+
+    method int GetCardCode() {
+        return code;
+    }
+
+    method boolean IsFlipped() {
+        return isFlipped; // Возвращает, перевернута ли карточка
+    }
+
+    method void Flip() {
+        if (~havePair) { // Если у карточки еще нет пары, то...
+            let isFlipped = ~isFlipped; // ...переворачиваем ее (меняем состояние)
+        }
+        return;
+    }
+
+    method boolean HavePair() {
+        return havePair; // Возвращает, есть ли у карточки пара
+    }
+
+    method void SetHavePair() { // Добавили метод для установки havePair
+        let havePair = true;
+        return;
+    }
+
+    method void CheckPair(Card card) {
+        if (code = card.GetCardCode()) { // Если названия карточек совпадают...
+            let havePair = true; // ...устанавливаем флаг havePair в true для этой карточки
+            do card.SetHavePair(); // ...и для другой карточки тоже!
+        }
+        return;
+    }
+}

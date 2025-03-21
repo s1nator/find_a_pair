@@ -1,0 +1,22 @@
+class Deck {
+    field Array cards; // Массив карточек в колоде
+
+    constructor Deck new() {
+        let cards = Array.new(10);
+        let cards[0] = Card.new(1);
+        let cards[1] = Card.new(2);
+        let cards[2] = Card.new(3);
+        let cards[3] = Card.new(4);
+        let cards[4] = Card.new(5);
+        let cards[5] = Card.new(5);
+        let cards[6] = Card.new(4);
+        let cards[7] = Card.new(3);
+        let cards[8] = Card.new(2);
+        let cards[9] = Card.new(1);
+        return this;
+    }
+
+    method Array GetCards() {
+        return cards; // Возвращает массив карточек (колоду)
+    }
+}
